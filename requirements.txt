@@ -1,0 +1,9 @@
+requests~=2.32.3
+pandas
+python-dotenv~=1.0.1
+selenium~=4.28.1
+vaderSentiment~=3.3.2
+wordcloud
+matplotlib~=3.10.0
+textblob~=0.19.0
+textblob-fr~=0.2.0

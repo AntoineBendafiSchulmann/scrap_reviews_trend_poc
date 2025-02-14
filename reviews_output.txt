@@ -1,0 +1,127 @@
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000001	0		Ce restaurant est un petit bijou ! La vue sur la mer est à couper le souffle et la cuisine, un pur régal.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000002	0		J’ai adoré l’atmosphère conviviale, le service est attentionné et la bouillabaisse était délicieuse.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000003	0		Une adresse incontournable à Marseille : le personnel est aux petits soins et les plats sont savoureux.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000004	0		Le cadre est sublime, on profite pleinement du panorama. Le poisson était frais et la cuisson impeccable.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000005	0		Malgré l’affluence, l’équipe a réussi à garder le sourire et à nous conseiller de très bons vins.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000006	0		Parfait pour un dîner romantique : on a pu admirer le coucher de soleil tout en dégustant un homard exquis.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000007	0		J’ai rarement été aussi bien accueilli. On sent que tout est fait pour sublimer la gastronomie locale.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000008	0		Les desserts sont à tomber, surtout le fondant au chocolat qui fond littéralement dans la bouche.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000009	0		Difficile de repartir après un tel festin, chaque plat était meilleur que le précédent.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000000a	0		L’ambiance est cosy, la déco soignée, et le personnel donne de bons conseils pour découvrir la région.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000000b	0		Franchement déçu : le service a été très lent et le poisson manquait de saveur ce soir-là.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000000c	0		Le cadre est magnifique, mais j’ai trouvé les prix un peu élevés pour la quantité servie.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000000d	0		J’espérais mieux après avoir lu les avis. Le serveur était peu souriant et les plats trop salés.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000000e	0		Belle situation en bord de mer, mais je suis resté sur ma faim : la sauce de la bouillabaisse était fade.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000000f	0		J’ai connu mieux à Marseille. Le riz était un peu trop cuit et le dessert sans grand intérêt.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000010	0		La terrasse est impressionnante, mais l’attente interminable a un peu gâché le plaisir de la soirée.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000011	0		Un restaurant correct sans plus, avec un personnel poli mais distant. On s’attendait à plus de chaleur.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	3.0	00000000-0000-0000-0000-000000000012	0		J’ai trouvé la carte classique, ni mauvaise ni exceptionnelle. Ça reste un bon choix pour un dîner simple.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	2.0	00000000-0000-0000-0000-000000000013	0		Franchement, ce n'est pas fameux.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000013	0		La vue sauve beaucoup de choses : on y vient davantage pour le panorama que pour la cuisine, à mon avis.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	3.0	00000000-0000-0000-0000-000000000014	0		Ni enchanté ni contrarié, j’y reviendrai peut-être pour un verre, mais pas forcément pour un repas complet.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	5.0	00000000-0000-0000-0000-000000000015	0		Expérience extraordinaire ! La bouillabaisse était parfaitement relevée et le serveur d’excellent conseil.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000016	0		Une ambiance romantique avec une sélection de vins régionaux à tomber. J’y retournerai avec plaisir !
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000017	0		Le personnel est à l’écoute, toujours prêt à adapter un plat en fonction de vos préférences alimentaires.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000018	0		Un vrai voyage culinaire ! Entre poissons ultra-frais et desserts maison, je ne savais plus où donner de la tête.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000019	0		Mon mari et moi avons célébré notre anniversaire ici, et c’était juste parfait du début à la fin.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000001a	0		Un accueil chaleureux, des conseils précis sur les spécialités locales et une carte extrêmement alléchante.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000001b	0		Un incontournable de Marseille : je recommande le menu dégustation pour découvrir toute la palette de saveurs.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000001c	0		Les serveurs sont prévenants et la vue sur la Méditerranée est simplement époustouflante. Coup de cœur total !
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000001d	0		Malgré un léger retard dans le service, les plats étaient tellement bons que j’en ai oublié l’attente.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000001e	0		Le personnel n’a pas hésité à nous conseiller un digestif maison : une liqueur d’agrumes surprenante et délicieuse.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000001f	0		Deuxième fois que nous venons et toujours aussi enchantés. La carte se renouvelle et c’est un vrai plus.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000020	0		Une pépite gastronomique : entre tradition et modernité, le chef sait marier les saveurs avec brio.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000021	0		La salle était un peu bruyante, mais l’amabilité du personnel a compensé ce petit désagrément.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000022	0		Le homard grillé était très bon, mais je m’attendais à des portions plus généreuses pour le prix.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000023	0		Tout était correct, sans grande originalité. Peut-être qu’un peu plus de créativité ne ferait pas de mal.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000024	0		Avec un tel emplacement, on espérait un coup de foudre culinaire. Finalement, c’était juste moyen.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000025	0		Nous avons passé un moment sympathique, mais il manque cette petite étincelle qui rendrait l’endroit inoubliable.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000026	0		Un spot idéal pour un apéritif au coucher du soleil, même si la carte mériterait quelques options végétariennes en plus.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000027	0		La vue à elle seule vaut le détour. Pour le reste, ça reste correct, sans être exceptionnel.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000028	0		Pas mal, mais le rapport qualité-prix n’est pas le plus avantageux de Marseille. L’emplacement se paie, j’imagine.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000029	0		Accueil poli, cadre super. J’étais surtout venu pour prendre des photos, et je n’ai pas été déçu par le panorama.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000002a	0		Mon plat de pâtes aux fruits de mer était savoureux. Quelques détails à peaufiner, mais c’est prometteur.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000002b	0		Nous avons été bluffés par la fraîcheur des poissons et l’originalité des sauces. Bravo au chef !
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000002c	0		Fabuleuse découverte : le personnel est souriant, le service rapide et les assiettes joliment dressées.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000002d	0		Je recommande particulièrement la terrasse, où l’on profite d’une brise marine très agréable en soirée.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000002e	0		Une mention spéciale pour les desserts : le tiramisu à la fleur d’oranger est un vrai coup de cœur.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000002f	0		En plus d’un emplacement idyllique, la cuisine est inventive, avec des touches d’épices inattendues.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000030	0		Le serveur a su nous raconter l’histoire des lieux, rendant l’expérience encore plus authentique.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000031	0		Nous avons été un peu tassés sur une petite table, mais la gentillesse de l’équipe a rapidement fait oublier ce désagrément.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000032	0		Mon risotto était trop cuit, dommage car la sauce était excellente. J’espère mieux la prochaine fois.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000033	0		Les prix sont élevés, mais la qualité est là. C’est un lieu parfait pour une occasion spéciale.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000034	0		Je m’attendais à des portions plus généreuses, mais la saveur compense largement. Bon moment quand même.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000035	0		Service un peu expéditif. On a senti qu’ils voulaient vite enchaîner les tables, ce qui est dommage pour profiter.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000036	0		C’était mon anniversaire et ils ont eu l’adorable attention de m’offrir un petit dessert personnalisé.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000037	0		Un cadre idyllique pour les amateurs de paysages maritimes. Nous avons adoré la beauté du lieu et la finesse des plats.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000038	0		Excellente bouillabaisse, accompagnée d’une rouille maison délicieuse. Un pur bonheur pour les papilles.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000039	0		En entrée, les huîtres étaient très fraîches. Mention spéciale au serveur qui nous a guidés dans le choix du vin.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000003a	0		On sent l’effort de proposer une cuisine maison. C’est copieux, savoureux et servi avec le sourire.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000003b	0		Dommage que le pain ait été un peu sec, sinon le reste était irréprochable. Belle carte de vins.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000003c	0		La salle intérieure est chaleureuse, la décoration rappelle la Méditerranée avec goût. Une ambiance très cosy !
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000003d	0		Nous avons fini par un café gourmand, un vrai festival de mini-desserts. J’en salive encore !
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000003e	0		C’est certainement un des meilleurs spots pour admirer le coucher du soleil tout en dînant, je recommande.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000003f	0		Les serveurs étaient aimables, mais un peu débordés en plein rush. Tout est rentré dans l’ordre après un moment.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000040	0		Un menu enfant simple mais efficace, les petits ont adoré. C’est rare de trouver un accueil aussi familial.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000041	0		La présentation des plats est soignée, le personnel sympathique et la carte plutôt variée. Rien à redire.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000042	0		Je regrette juste la musique un peu trop forte à mon goût, mais c’est un détail face à la qualité du repas.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000043	0		Les calamars grillés étaient excellents, et la sauce persillade rappelait les saveurs du sud. Un régal.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000044	0		J’ai bien aimé le cadre épuré et moderne, le tout rehaussé par la vue imprenable sur la côte.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000045	0		On sent un vrai engagement pour les produits frais et de saison. Tout semble fait maison, et ça se goûte.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000046	0		Un peu cher, mais l’expérience justifie largement le prix. Les saveurs sont recherchées et le service irréprochable.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000047	0		Nous avons fêté un anniversaire et le personnel a chanté en apportant le gâteau, c’était adorable et mémorable.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000048	0		De belles assiettes, un service fluide. J’ai particulièrement apprécié la carte de cocktails, très créative.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	3.5	00000000-0000-0000-0000-000000000049	0		La terrasse était fermée pour cause de vent, dommage. Heureusement, l’intérieur est tout aussi charmant.
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000004a	0		Une adresse que je recommande vivement ! On y allie plaisir des yeux et des papilles dans une ambiance chaleureuse.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000001	0		Ce petit bistrot familial est un vrai trésor caché. Les quiches maison sont fabuleuses !
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000002	0		Accueil chaleureux, mais j’ai trouvé la carte un peu trop basique. Le décor reste charmant.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000003	0		Le gratin dauphinois était un pur régal, cuit à la perfection. J’y retournerai sans hésiter !
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	2.0	00000000-0000-0000-0000-000000000004	0		Déçue par la lenteur du service… Plus de 30 minutes avant qu’on prenne notre commande.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000005	0		Les pâtisseries sont à tomber, surtout la tarte aux pommes rustique ! Un vrai goût d’enfance.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000006	0		Je m’attendais à plus de choix végétariens. L’ambiance est conviviale, mais la carte reste limitée.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000007	0		Mon mari et moi avons adoré l’esprit “comme à la maison”. Un service attentionné et plein de sourires.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000008	0		Ça sent la cuisine authentique. Les portions sont généreuses, parfaites pour les gros appétits !
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	3.0	00000000-0000-0000-0000-000000000009	0		Le cadre est un peu vieillot, on dirait un salon de grand-mère. Ça plaît ou ça déplaît, selon les goûts.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000000a	0		Les prix sont corrects pour la qualité proposée. J’ai craqué pour la soupe à l’oignon, délicieuse.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000000b	0		Je ne comprends pas l’engouement. Les plats étaient tièdes et le vin rouge pas assez aéré.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	3.0	00000000-0000-0000-0000-00000000000c	0		Le plat était délicieux, mais le service trop lent.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000000c	0		Plaisir simple mais efficace : leur croque-monsieur revisité est un incontournable à tester !
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000000d	0		On a dû demander trois fois de l’eau. La serveuse était gentille, mais visiblement débordée.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000000e	0		Un cadre intimiste, un service discret, et une cuisine de terroir qui réchauffe le cœur.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000000f	0		Je n’ai pas aimé la décoration trop kitsch. La nourriture n’était pas mauvaise, mais rien d’exceptionnel.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000010	0		Un excellent rapport qualité-prix, surtout le menu du jour avec dessert fait maison et café inclus.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	3.5	00000000-0000-0000-0000-000000000011	0		Ma grand-mère aurait pu cuisiner mieux ! Mais les serveurs sont adorables, ça sauve l’expérience.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000012	0		Je recommande les crêpes salées, un pur délice. La garniture est généreuse et la pâte bien moelleuse.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000013	0		Niveau décoration, on voyage dans le temps. Ça a un charme certain, à condition d’aimer l’ancien.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000014	0		C’est le spot idéal pour un brunch du dimanche : pain frais, œufs brouillés, et confiture artisanale.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000015	0		Nous avons attendu longtemps pour avoir nos plats, mais la cuisine maison prend sans doute du temps.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	2.0	00000000-0000-0000-0000-000000000016	0		Je suis reparti un peu déçu : les plats manquaient d’assaisonnement. Je m’attendais à plus de goût.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000017	0		Fantastique ! Les lasagnes végétariennes sont riches en légumes et la sauce tomate est incroyablement savoureuse.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	3.0	00000000-0000-0000-0000-000000000018	0		Mon café était tiède et l’addition un peu salée. Pourtant, le resto était à moitié vide. Dommage.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000019	0		Le personnel est vraiment sympa et à l’écoute. Ça compense un dressage un peu amateur.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000001a	0		Ma salade au chèvre chaud était excellente : fromages variés, miel parfumé, un vrai bonheur !
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	3.4	00000000-0000-0000-0000-00000000001b	0		On se sent un peu à l’étroit aux heures de pointe, les tables sont très rapprochées.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000001c	0		Leur chocolat chaud maison est un must pour les gourmands, épais et onctueux.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	2.0	00000000-0000-0000-0000-00000000001d	0		Très déçue par le manque de propreté : la table collait et le sol n’avait pas l’air très net.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000001e	0		Mes enfants ont adoré le menu “petits loups”, surtout la purée maison. C’est assez rare pour être souligné.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	3.0	00000000-0000-0000-0000-00000000001f	0		J’espérais plus d’originalité. Au final, c’est simple et correct, mais pas inoubliable.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000020	0		Leur tarte salée au saumon m’a conquise. Texture parfaite, avec une pâte sablée délicieuse.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000021	0		Un endroit où l’on se sent vite comme chez soi, la patronne n’hésite pas à venir discuter en salle.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	3.5	00000000-0000-0000-0000-000000000022	0		Chaises inconfortables, et il faisait un peu froid. Heureusement, le cassoulet valait vraiment le détour.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000023	0		Un menu pas très grand, mais tout est fait avec soin. On sent les produits frais dans l’assiette.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000024	0		La musique d’ambiance est trop forte à mon goût, j’ai eu du mal à discuter. Les plats restent bons.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000025	0		Ma ratatouille était excellente, bien assaisonnée. Un vrai goût du sud, bravo à la cuisinière !
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	3.0	00000000-0000-0000-0000-000000000026	0		J’ai trouvé un morceau de coquille d’œuf dans mon plat, mais ils ont vite réagi et offert le dessert.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000027	0		Petit restau sans prétention, on y mange bien pour pas cher. Un vrai esprit de quartier.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000028	0		J’ai adoré l’idée du plat du jour à l’ardoise, ça change tous les jours et c’est toujours frais.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000029	0		Serveurs trop familiers à mon goût, j’aurais préféré plus de discrétion. Mais le repas était bon.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000002a	0		La tarte tatin vaut à elle seule le détour, caramélisée comme il faut. Je reviendrai juste pour ça !
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000002b	0		Service rapide et plats de qualité, parfait pour une pause déjeuner en semaine.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000002c	0		Ambiance un peu bruyante, mais c’est un signe que le lieu est apprécié par les habitués !
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000002d	0		Je pensais que ce restaurant serait bien, mais j’ai été déçu."
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000002d	0		Je ne suis pas fan des nappes en plastique, ça fait cantine. Par contre, les croissants étaient très bons.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000002e	0		Leur confiture maison est un pur délice, on ressent l’authenticité de la recette de grand-mère.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000002f	0		Nous avons attendu un peu, mais ça valait le coup : le poulet rôti était juteux et parfaitement assaisonné.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000030	0		L’odeur de cuisine en entrant est déjà un bon signe. J’ai eu un petit coup de cœur pour leur soupe de légumes.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	3.0	00000000-0000-0000-0000-000000000031	0		Le dessert au citron avait un goût chimique, j’ai été franchement déçue. Dommage car le reste était bon.
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000032	0		Gros plus : le coin bibliothèque où on peut feuilleter de vieux magazines en attendant nos plats, c’est sympa !

@@ -57,6 +57,7 @@ kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000
 kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000038	0	Excellente bouillabaisse, accompagnée d’une rouille maison délicieuse. Un pur bonheur pour les papilles.	POSITIVE
 kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-000000000039	0	En entrée, les huîtres étaient très fraîches. Mention spéciale au serveur qui nous a guidés dans le choix du vin.	POSITIVE
 kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000003a	0	On sent l’effort de proposer une cuisine maison. C’est copieux, savoureux et servi avec le sourire.	POSITIVE
+kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	3.0	00000000-0000-0000-0000-00000000003b	0	Le repas était tiède et l’addition un peu salée.	NEUTRAL
 kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000003b	0	Dommage que le pain ait été un peu sec, sinon le reste était irréprochable. Belle carte de vins.	NEUTRAL
 kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000003c	0	La salle intérieure est chaleureuse, la décoration rappelle la Méditerranée avec goût. Une ambiance très cosy !	POSITIVE
 kdASwqKE18QNmMjDE5mzqA	le-péron-marseille	Le Péron	4.0	00000000-0000-0000-0000-00000000003d	0	Nous avons fini par un café gourmand, un vrai festival de mini-desserts. J’en salive encore !	POSITIVE
@@ -117,11 +118,13 @@ A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-00
 A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000029	0	Serveurs trop familiers à mon goût, j’aurais préféré plus de discrétion. Mais le repas était bon.	NEUTRAL
 A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000002a	0	La tarte tatin vaut à elle seule le détour, caramélisée comme il faut. Je reviendrai juste pour ça !	POSITIVE
 A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000002b	0	Service rapide et plats de qualité, parfait pour une pause déjeuner en semaine.	POSITIVE
-A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000002c	0	Ambiance un peu bruyante, mais c’est un signe que le lieu est apprécié par les habitués !	POSITIVE
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000002c	0	Ambiance un peu bruyante, mais c’est un signe que le lieu est apprécié par les habitués !.	NEUTRAL
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	3.0	00000000-0000-0000-0000-00000000002d	0	C’est un lieu agréable, mais pas inoubliable.	NEUTRAL
 A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000002d	0	Je pensais que ce restaurant serait bien, mais j’ai été déçu."	NEGATIVE
 A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000002d	0	Je ne suis pas fan des nappes en plastique, ça fait cantine. Par contre, les croissants étaient très bons.	NEUTRAL
 A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000002e	0	Leur confiture maison est un pur délice, on ressent l’authenticité de la recette de grand-mère.	POSITIVE
 A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-00000000002f	0	Nous avons attendu un peu, mais ça valait le coup : le poulet rôti était juteux et parfaitement assaisonné.	POSITIVE
 A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000030	0	L’odeur de cuisine en entrant est déjà un bon signe. J’ai eu un petit coup de cœur pour leur soupe de légumes.	POSITIVE
 A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	3.0	00000000-0000-0000-0000-000000000031	0	Le dessert au citron avait un goût chimique, j’ai été franchement déçue. Dommage car le reste était bon.	NEGATIVE
-A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000032	0	Gros plus : le coin bibliothèque où on peut feuilleter de vieux magazines en attendant nos plats, c’est sympa !	POSITIVE
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-0000-000000000032	0	Gros plus : le coin bibliothèque où on peut feuilleter de vieux magazines en attendant nos plats, c’est sympa !.	POSITIVE
+A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	3.5	00000000-0000-0000-0000-000000000033	0	On a attendu un peu, mais le repas était bon.	POSITIVE

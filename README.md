@@ -118,8 +118,8 @@ DEBUG: Avis → "J’espérais mieux après avoir lu les avis. Le serveur était
 
 2. Les avis clairement négatifs sont bien classés → (NEGATIVE)
 
-    - "Le repas était tiède et l’addition un peu salée." → NEGATIVE ❌
-    - "Je suis reparti un peu déçu : les plats manquaient d’assaisonnement." → NEGATIVE ❌
+    - "Le dessert au citron avait un goût chimique, j’ai été franchement déçue. Dommage car le reste était bon." → NEGATIVE ❌
+    - "Je ne comprends pas l’engouement. Les plats étaient tièdes et le vin rouge pas assez aéré." → NEGATIVE ❌
     - "Très déçue par le manque de propreté : la table collait et le sol n’avait pas l’air très net." → NEGATIVE ❌
 
 

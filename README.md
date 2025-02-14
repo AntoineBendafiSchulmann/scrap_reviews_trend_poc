@@ -134,16 +134,6 @@ DEBUG: Avis → "J’espérais mieux après avoir lu les avis. Le serveur était
 
 ## 🔥 Pistes d'amélioration :
 
-1. Certains avis NEUTRAL pourraient être POSITIVE
-
- - "Un endroit où l’on se sent vite comme chez soi, la patronne vient discuter en salle." → NEUTRAL 
-    - → Ce commentaire est positif, donc il devrait être classifié POSITIVE.
-
-2. Les phrases contenant une contradiction sont parfois mal classées
-
-- "Le repas était tiède, mais le service était parfait."
-    - Est-ce que ça doit être évalué en tant que NEUTRAL ou POSITIVE ?
-
 #### 📌  Pourquoi ```CamemBERT``` est surrement mieux dans les cas des phrases nuancées :
 
 - Des nuances et contradictions : "Le repas était bon, mais le service trop lent."
@@ -152,7 +142,7 @@ DEBUG: Avis → "J’espérais mieux après avoir lu les avis. Le serveur était
 
 👉 Un modèle ```transformers``` comme ```CamemBERT``` comprend ces subtilités, alors que ```TextBlob-fr``` se base uniquement sur un dictionnaire de mots-clés.
 
-####  📌 Exemple d’erreurs de ```TextBlob-fr``` :
+####  📌 Exemple d’erreurs de ```TextBlob-fr```  corrigées par ```CamemBERT``` :
 
 <b>Cas 1 : phrase avec une nuance entre positif et négatif</b>
 
@@ -160,6 +150,7 @@ DEBUG: Avis → "J’espérais mieux après avoir lu les avis. Le serveur était
 "Le plat était délicieux, mais le service trop lent."
 
 - ```TextBlob-fr``` : POSITIVE (à cause de "délicieux") ❌
+- ```CamemBERT``` : NEUTRAL ✅
 
 <b>Cas 2 : phrase idiomatique (expressions imagées) difficile à détecter</b>
 
@@ -167,6 +158,7 @@ DEBUG: Avis → "J’espérais mieux après avoir lu les avis. Le serveur était
 "Franchement, ce n'est pas fameux."
 
 - ```TextBlob-fr``` : NEUTRAL ( surrement parce qu'il ne comprend pas "pas fameux" comme négatif) ❌
+- ```CamemBERT``` : NEGATIVE ✅
 
 
 <b>Cas 3 : phrase  présentant une ambiguïté entre les sentiments positifs et négatifs</b>
@@ -175,18 +167,19 @@ DEBUG: Avis → "J’espérais mieux après avoir lu les avis. Le serveur était
 "Mon plat de pâtes aux fruits de mer était savoureux. Quelques détails à peaufiner, mais c’est prometteur."
 
 - ```TextBlob-fr``` : NEGATIVE  (sans doute à cause du "mais") ❌
+- ```CamemBERT``` : POSITIVE ✅
 
  Pour les cas, où les avis clients sont  nuancés, longs, et complexes un modèle ```transformers``` plus avancé comme ```CamemBERT``` pourrait mieux gérer ça.
 
 
  ## 🎯 En conclusion :
 
-- Globalement, c'est cohérent ✅
+- Globalement, les résultats sont cohérents ✅
 - Les cas évidents (bon/mauvais) sont bien classés ✅
 - Mais les avis un peu nuancés sont parfois mal détectés ⚠
     - ```TextBlob-fr``` reste un modèle basique basé sur des mots-clés et un lexique.
 
-📌 Afin de chercher plus de précision, il faudrait essayer un modèle de NLP plus avancé, comme ```CamemBERT``` parmis les ```transformers```.
+📌 Afin de chercher plus de précision, il a fallu essayer un modèle de NLP plus avancé, comme ```CamemBERT``` parmis les ```transformers```.
 
 Un modèle Transformer comme ```CamemBERT``` comprend les subtilités, alors que ```TextBlob-fr``` se base uniquement sur <b>un dictionnaire de mots-clés</b>.
 

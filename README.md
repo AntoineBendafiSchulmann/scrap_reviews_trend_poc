@@ -194,4 +194,6 @@ Un modèle Transformer comme ```CamemBERT``` comprend les subtilités, alors que
 
  lien des modèles de ```transformers``` : https://github.com/huggingface/transformers
 
- lien du modèle ```CamemBERT``` : https://huggingface.co/almanach/camembert-base/tree/main
+ lien du modèle  ```CamemBERT``` ( pré-entraîné sur du texte général en français, mais pas spécifique à l'analyse de sentiment): https://huggingface.co/almanach/camembert-base/tree/main
+
+ lien du modèle ```CamemBERT``` (pré-entraîné sur du texte spécifique à l'analyse de sentiment ): https://huggingface.co/cmarkea/distilcamembert-base-sentiment/tree/main

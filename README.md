@@ -2,17 +2,17 @@
 
 ## 📌 Contexte
 
-Ce projet permet de **classifier des avis** clients Francophones en trois catégories :  
+Ce projet offre la possibilité de **classer des commentaires** de clients francophones en trois catégories :  
 - **POSITIVE** 🟢 : Un avis globalement positif  
 - **NEGATIVE** 🔴 : Un avis globalement négatif  
 - **NEUTRAL** 🟡 : Un avis mitigé/neutre  
 
-L’objectif est de réaliser un poc pour de l'analyse d'avis en francais ici pour l'exemple j'ai utilisé des avis de restaurants et de leur attribuer une **catégorie de sentiment** automatiquement.
+L’objectif est de créer un proof of concept (poc) pour l'analyse d'avis automatique en français. Dans cet exemple, j'ai choisi des critiques de restaurants/d'entreprises et leur attribuer automatiquement une **catégorie de sentiment**.
 
-Les modèles utilisés dans ce projet reposent sur:
+Ce projet s'appuie sur les modèles suivants :
 
- - **TextBlob-fr**, une bibliothèque NLP  basé sur des mots-clés et un lexique.
- - **CamemBERT** modèle transformers , peut mieux gérer les phrases nuancées.
+ - **TextBlob-fr**, une bibliothèque NLP  basé sur des mots-clés et un dictionnaire.
+ - **CamemBERT** modèle transformers , est plus apte à traiter les phrases nuancées.
 
 
 
@@ -172,16 +172,46 @@ DEBUG: Avis → "J’espérais mieux après avoir lu les avis. Le serveur était
  Pour les cas, où les avis clients sont  nuancés, longs, et complexes un modèle ```transformers``` plus avancé comme ```CamemBERT``` pourrait mieux gérer ça.
 
 
- ## 🎯 En conclusion :
+ ## 🎯 Pourquoi se tourner vers le modèle ```CamemBERT```  :
 
-- Globalement, les résultats sont cohérents ✅
+- Globalement, les résultats sont plus cohérents ✅
 - Les cas évidents (bon/mauvais) sont bien classés ✅
 - Mais les avis un peu nuancés sont parfois mal détectés ⚠
     - ```TextBlob-fr``` reste un modèle basique basé sur des mots-clés et un lexique.
 
 📌 Afin de chercher plus de précision, il a fallu essayer un modèle de NLP plus avancé, comme ```CamemBERT``` parmis les ```transformers```.
 
-Un modèle Transformer comme ```CamemBERT``` comprend les subtilités, alors que ```TextBlob-fr``` se base uniquement sur <b>un dictionnaire de mots-clés</b>.
+Un modèle Transformer comme ```CamemBERT``` comprend les subtilités le modèle s’appuie sur la probabilité des mots dans un contexte, alors que ```TextBlob-fr``` se base uniquement sur <b>un dictionnaire de mots-clés</b>.
+ 
+## 🎯 Exemple d’erreurs du modèle ```CamemBERT``` :
+
+Le modèle a du mal avec certaines structures de phrases. Par exemple, la phrase :
+
+<b>"j'avais besoin rapide d'argent cela m'a dépannée très facilement"</b>
+
+a été classée <b>NEGATIVE</b>, alors qu'en réalité, elle exprime un sentiment positif.
+
+### Pourquoi le modèle fait des erreurs
+
+Le modèle montre ses limites sur des phrases mal formulées ou ambiguës :
+
+1. Syntaxe imparfaite → Mauvaise compréhension
+
+    - Les modèles ```transformers``` sont robustes mais parfois sensibles à des structures de phrase mal construites.
+    - La phrase est ici est surrement moyenne  grammaticalement parlant ("besoin rapide d'argent" au lieu de par exemple  "j'avais rapidement besoin d'argent").
+
+2. Présence du mot "argent" et "besoin" → Possiblement mal influencé
+
+    - Dans beaucoup d’avis négatifs, "argent", "besoin", "problème financier" sont souventassociés à des expériences difficiles.
+    - Si le modèle a vu beaucoup de phrases du type "J'avais besoin d'argent, impossible d'obtenir un prêt, honteux !" au cours de son entraînement, il risque de mal interpréter cette phrase.
+
+3. Pas de mot-clé explicitement positif dans l'avis
+
+    - Le modèle s’appuie sur la <b>probabilité des mots</b> dans un contexte.
+    - "Rapide" et "facilement" sont des mots généralement positifs.
+    - Cependant, "besoin rapide d'argent" est perçu par le modèle  comme synonyme d' urgence ou de  détresse, donc associé à un contexte négatif.
+
+ ## 🔗 Liens 
 
  lien de la bibliothèque ```TextBlob-fr``` : https://github.com/sloria/textblob-fr
 

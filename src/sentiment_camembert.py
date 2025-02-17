@@ -3,8 +3,10 @@ import re
 from transformers import pipeline
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  
-INPUT_FILE = os.path.join(BASE_DIR, "reviews_output.txt")  
-OUTPUT_FILE = os.path.join(BASE_DIR, "reviews_with_sentiment_camembert.txt")  
+#INPUT_FILE = os.path.join(BASE_DIR, "reviews_output.txt")
+INPUT_FILE = os.path.join(BASE_DIR, "trustpilot_reviews.txt")
+#OUTPUT_FILE = os.path.join(BASE_DIR, "reviews_with_sentiment_camembert.txt") 
+OUTPUT_FILE = os.path.join(BASE_DIR, "trustpilot_reviews_with_sentiment_camembert.txt")  
 
 print(f"DEBUG: Chemin d'entrée → {INPUT_FILE}")
 print(f"DEBUG: Chemin de sortie → {OUTPUT_FILE}")
@@ -84,7 +86,7 @@ def main():
                 f"{it['sentiment']}\n"
             )
 
-    print(f"✅ Succès: {len(items)} avis analysés avec `CamemBERT` et écrits dans `{OUTPUT_FILE}`.")
+    print(f"✅ Succès: {len(items)} avis analysés avec le modèle `CamemBERT` et écrits dans le fichier `{OUTPUT_FILE}`.")
 
 if __name__ == "__main__":
     main()

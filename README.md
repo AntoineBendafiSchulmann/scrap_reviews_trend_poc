@@ -211,6 +211,10 @@ Le modèle montre ses limites sur des phrases mal formulées ou ambiguës :
     - "Rapide" et "facilement" sont des mots généralement positifs.
     - Cependant, "besoin rapide d'argent" est perçu par le modèle  comme synonyme d' urgence ou de  détresse, donc associé à un contexte négatif.
 
+4. Contexte et ironie: 
+
+    - Le modèle comprend pas bien le second degré ou l'ironie
+
  ## 🔗 Liens 
 
  lien de la bibliothèque ```TextBlob-fr``` : https://github.com/sloria/textblob-fr

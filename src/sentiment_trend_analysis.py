@@ -10,9 +10,9 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 nlp = spacy.load("fr_core_news_md")
 
-model_name = "NousResearch/Nous-Hermes-2-Mistral-7B-DPO"
+model_name = "bigscience/bloomz-7b1-mt"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(model_name, device_map="auto")
+model = AutoModelForCausalLM.from_pretrained(model_name, device_map="auto" if torch.cuda.is_available() else "cpu",torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -84,30 +84,32 @@ def generate_summary(trends, sentiment_type, retry=0):
 
     try:
         filtered_trends = [t for t in trends if len(t.split()) > 2]
-
         if not filtered_trends:
             print(f"⚠️ Aucune tendance exploitable trouvée pour {sentiment_type}.")
             return "Résumé non disponible."
 
         trends_text = "; ".join(filtered_trends) + "."
-
-        prompt = f"""
-        Reformule en UNE SEULE PHRASE fluide ces tendances des avis {sentiment_type} :
-        "{trends_text}"
-        Assure-toi d'inclure les idées principales et de les connecter naturellement sans énumération brute.
+        prompt = f"""Les avis {sentiment_type} mentionnent principalement ces tendances : {trends_text} 
+        💡 Reformule cela en UNE SEULE PHRASE naturelle et fluide, sans liste brute, en reliant logiquement les idées.
+        🔹 Ne change pas le sens des tendances.
+        🔹 Ne génère pas plus d’une phrase.
         """
 
         inputs = tokenizer(prompt, return_tensors="pt").to(device)
-        output_ids = model.generate(**inputs, max_new_tokens=150, pad_token_id=tokenizer.eos_token_id)
+        output_ids = model.generate(
+            **inputs,
+            max_new_tokens=80,  
+            pad_token_id=tokenizer.eos_token_id,  
+            temperature=0.7, 
+            top_p=0.9,  
+            repetition_penalty=1.1,  
+            do_sample=True  
+        )
 
         response = tokenizer.decode(output_ids[0], skip_special_tokens=True).strip()
 
         if response.lower() in ["résumé non disponible", "aucune idée générale détectée"]:
-            if retry < 2:
-                print(f"⚠️ Résumé encore trop haché, reformulation pour {sentiment_type}. Tentative {retry+1}.")
-                return generate_summary(filtered_trends[:10], sentiment_type, retry=retry+1)
-            else:
-                return f"Les avis {sentiment_type} concernent principalement des aspects variés, mais aucune synthèse précise n’a pu être générée."
+            return response
 
         if response.count(",") > 10 or ":" in response:
             if retry < 2:

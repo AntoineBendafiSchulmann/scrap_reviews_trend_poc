@@ -11,3 +11,4 @@ node_modules/
 .secret-*
 **.sample
 *.txt
+/mistral_model

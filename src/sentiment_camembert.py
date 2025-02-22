@@ -86,7 +86,7 @@ def main():
                 f"{it['sentiment']}\n"
             )
 
-    print(f"✅ Succès: {len(items)} avis analysés avec le modèle `CamemBERT` et écrits dans le fichier `{OUTPUT_FILE}`.")
+    print(f"✅ Succès: {len(items)} avis analysés avec le modèle `DistilCamemBERT` et écrits dans le fichier `{OUTPUT_FILE}`.")
 
 if __name__ == "__main__":
     main()

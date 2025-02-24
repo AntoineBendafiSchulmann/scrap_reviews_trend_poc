@@ -6,13 +6,23 @@ import pandas as pd
 from collections import Counter
 from keybert import KeyBERT
 from yake import KeywordExtractor
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, pipeline
 
 nlp = spacy.load("fr_core_news_md")
 
-model_name = "bigscience/bloomz-7b1-mt"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(model_name, device_map="auto" if torch.cuda.is_available() else "cpu",torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32)
+model_name = "plguillou/t5-base-fr-sum-cnndm"
+
+try:
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModelForSeq2SeqLM.from_pretrained(
+        model_name,
+        device_map="auto",
+        torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32
+    )
+    summarizer = pipeline("summarization", model=model, tokenizer=tokenizer)
+except Exception as e:
+    print(f"❌ Erreur lors du chargement du modèle : {e}")
+    exit()
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -35,24 +45,23 @@ def extract_trends(texts, sentiment, top_n=20):
     all_trends = []
     for text in texts:
         yake_keywords = kw_extractor.extract_keywords(text)
-        keybert_keywords = kw_model.extract_keywords(text, keyphrase_ngram_range=(3, 6), stop_words="french", top_n=5)
+        keybert_keywords = kw_model.extract_keywords(text, keyphrase_ngram_range=(3, 6),
+                                                     stop_words="french", top_n=5)
 
         all_trends.extend([kw[0] for kw in yake_keywords if len(kw[0].split()) > 4])
         all_trends.extend([kw[0] for kw in keybert_keywords if len(kw[0].split()) > 4])
 
     word_freq = Counter(all_trends)
-    extracted_trends = list(set([
+    extracted_trends = [
         phrase for phrase, _ in word_freq.most_common(top_n)
         if phrase not in ["bonjour", "rien dire", "merci"]
-    ]))
+    ]
 
     refined_trends = refine_trends(extracted_trends)
-    
     filtered_trends = [
         trend for trend in refined_trends
-        if len(trend.split()) > 3 and not any(
-            word in trend.lower() for word in ["oreille", "bonjour", "rien dire", "merci"]
-        )
+        if len(trend.split()) > 3
+        and not any(word in trend.lower() for word in ["oreille", "bonjour", "rien dire", "merci"])
     ]
 
     print(f"✅ Tendances filtrées ({sentiment}) :", filtered_trends if filtered_trends else "Aucune tendance détectée")
@@ -78,51 +87,35 @@ def refine_trends(trends):
     print(f"✅ Tendances affinées : {len(refined_trends)} tendances significatives.")
     return refined_trends
 
-def generate_summary(trends, sentiment_type, retry=0):
+def double_pass_summary(text):
+    first_pass = summarizer(
+        text,
+        max_length=80,
+        min_length=25,
+        do_sample=False
+    )[0]["summary_text"].strip()
+
+    second_prompt = f"Transforme ce texte en une seule phrase fluide: {first_pass}"
+    second_pass = summarizer(
+        second_prompt,
+        max_length=60,
+        min_length=15,
+        do_sample=False
+    )[0]["summary_text"].strip()
+
+    if not second_pass.endswith("."):
+        second_pass += "."
+
+    return second_pass
+
+def generate_summary(trends, sentiment_type):
     if not trends or trends == ["Aucune tendance détectée"]:
         return "Aucune idée générale détectée."
 
-    try:
-        filtered_trends = [t for t in trends if len(t.split()) > 2]
-        if not filtered_trends:
-            print(f"⚠️ Aucune tendance exploitable trouvée pour {sentiment_type}.")
-            return "Résumé non disponible."
+    text_to_summarize = "; ".join(trends)
 
-        trends_text = "; ".join(filtered_trends) + "."
-        prompt = f"""Les avis {sentiment_type} mentionnent principalement ces tendances : {trends_text} 
-        💡 Reformule cela en UNE SEULE PHRASE naturelle et fluide, sans liste brute, en reliant logiquement les idées.
-        🔹 Ne change pas le sens des tendances.
-        🔹 Ne génère pas plus d’une phrase.
-        """
-
-        inputs = tokenizer(prompt, return_tensors="pt").to(device)
-        output_ids = model.generate(
-            **inputs,
-            max_new_tokens=80,  
-            pad_token_id=tokenizer.eos_token_id,  
-            temperature=0.7, 
-            top_p=0.9,  
-            repetition_penalty=1.1,  
-            do_sample=True  
-        )
-
-        response = tokenizer.decode(output_ids[0], skip_special_tokens=True).strip()
-
-        if response.lower() in ["résumé non disponible", "aucune idée générale détectée"]:
-            return response
-
-        if response.count(",") > 10 or ":" in response:
-            if retry < 2:
-                print(f"⚠️ Résumé encore trop haché, reformulation pour {sentiment_type}. Tentative {retry+1}.")
-                return generate_summary(filtered_trends[:10], sentiment_type, retry=retry+1)
-            else:
-                return "Résumé non disponible."
-
-        return response
-
-    except Exception as e:
-        print(f"❌ Erreur dans `generate_summary({sentiment_type})` : {e}")
-        return "Résumé non généré."
+    summary = double_pass_summary(text_to_summarize)
+    return summary
 
 def format_summary(trends):
     if not trends or trends == ["Aucune tendance détectée"]:
@@ -130,10 +123,10 @@ def format_summary(trends):
     return "\n".join(f"- {trend}" for trend in trends)
 
 def main():
-    print("🛠️ Test rapide du modèle...")  # si le résultat est trop bizarre, essayer de changer le modèle ou le prompt
+    print("🛠️ Test rapide du modèle...")
     test_trends = ["réponse rapide", "dossier traité rapidement", "satisfait du service"]
     test_summary = generate_summary(test_trends, "positifs")
-    print(f"✅ Test du modèle : {test_summary}") 
+    print(f"✅ Test du modèle : {test_summary}")
 
     print(" Lecture du fichier de tendances...")
     df = pd.read_csv(TREND_INPUT_FILE, sep="\t", header=None, names=["text", "sentiment"])
@@ -190,4 +183,5 @@ def main():
     print(f"✅ Résumé enregistré dans `{TREND_OUTPUT_FILE}`.")
 
 if __name__ == "__main__":
+    print(generate_summary(["Service rapide et efficace", "Réponse immédiate"], "positifs"))
     main()

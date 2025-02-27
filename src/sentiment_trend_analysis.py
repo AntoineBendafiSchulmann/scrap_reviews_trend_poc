@@ -20,14 +20,16 @@ model = AutoModelForCausalLM.from_pretrained(
     device_map="auto",
     torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32
 )
+
 text_generator = pipeline(
     "text-generation",
     model=model,
     tokenizer=tokenizer,
-    max_new_tokens=120,
+    max_new_tokens=600,
     do_sample=False,
     num_beams=4,
-    device_map="auto"
+    device_map="auto",
+    repetition_penalty=1.4
 )
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -55,9 +57,9 @@ def refine_trends(trends):
     return refined
 
 # Renvoie le premier extrait de texte (snippet) contenant la tendance 'tend' 
-# dans la liste de reviews, en renvoyant jusqu'à  20  mots  avant et après pour donner le contexte.
+# dans la liste de reviews, en renvoyant jusqu'à  30  mots  avant et après pour donner le contexte.
 #arrete à  la première occurrence trouvée pour une tendance
-def find_context(tend: str, reviews: list, window=20) -> str:
+def find_context(tend: str, reviews: list, window=30) -> str:
     tend_words = tend.lower().split()
     n = len(tend_words)
     for review in reviews:
@@ -103,14 +105,39 @@ def extract_trends(texts, sentiment, top_n=20):
             final_list.append(trend)
     return final_list if final_list else ["Aucune tendance détectée"]
 
-def postprocess_limited_sentences(text: str, max_sentences=3) -> str:
-    sentences = text.split('.')
-    limited = '.'.join(sentences[:max_sentences]).strip()
+def postprocess_limited_sentences(text: str, max_sentences: int = 0) -> str:
+    if max_sentences <= 0:
+        return text.strip()
+
+    sentences = [s.strip() for s in text.split('.') if s.strip()]
+    limited = '. '.join(sentences[:max_sentences]).strip()
     if limited and not limited.endswith('.'):
         limited += '.'
     return limited
 
+def remove_incomplete_ending(summary: str) -> str:
+    sentences = [s.strip() for s in summary.split('.') if s.strip()]
+    if not sentences:
+        return summary.strip()
+
+    last_sentence = sentences[-1]
+    words = last_sentence.split()
+
+    if len(words) < 5:
+        sentences.pop()
+    else:
+        last_word = words[-1].lower().strip(",;!?'.-")
+        if last_word.endswith("é") or last_word.endswith("è") or last_word.endswith("ai"):
+            sentences.pop()
+
+    final = '. '.join(sentences).strip()
+    if final and not final.endswith('.'):
+        final += '.'
+    return final
+
+
 def generate_summary_instruct(trends, sentiment_type):
+
     if not trends or trends == ["Aucune tendance détectée"]:
         return "Aucune idée générale détectée."
 
@@ -130,30 +157,35 @@ def generate_summary_instruct(trends, sentiment_type):
     else:
         short_text = f"plusieurs points récurrents, dont {trends[0]} et {trends[1]} entre autres"
 
+    # plus il y a de tendances significatives à décrire, plus le modèle a de place
+    max_sentences = len(trends) + 4
+
     if sentiment_type == "positifs":
         prompt = (
-            f"D'après les retours des clients, les avis positifs font ressortir {short_text}. "
-            "Rédige trois phrases maximum en bon français, en reliant les idées avec des connecteurs, "
-            "sans énumération brute, et sans mentionner les avis négatifs ni neutres. "
-            "Ne termine pas tes phrases de manière incomplète : arrête-toi net après trois phrases. "
-            "Évite de répéter plusieurs fois la même expression et corrige toute faute de frappe (par exemple => 'débloquer')."
+            f"On observe que, d'après les retours des clients positifs, les avis positifs portent principalement sur {short_text},fait en sorte d' analyser pour clarifier cette tendance utilise impérativement un extrait pour reformuler la tendance de manière précise  (par exemple la phrase: 'Sans frais sont souvent considérés comme inexistants' ne veux rien dire il faut un minimum utiliser le contexte pour que ca ait du sens "
+            "Rédige un seul paragraphe en bon français, sans mentionner les avis négatifs ni neutres. "
+            "Contente-toi de décrire les points positifs rapportés dans les retours, de manière purement descriptive ne donne pas de conseils."
+            "Privilégie un style narratif fluide, sans énumération brute ni connecteurs répétitifs (ex. 'En outre', 'De plus'). "
+            "Ne t’arrête pas en plein mot, termine entièrement chacune des phrases, quand tu commences une idée tu la développe entièrement (par exemple pas de 'après ces retours, il app.' et puis plus rien la phrase est interrompue ici), et évite de répéter la même idée."
+            "Ne rédige pas de note ou d'explication sur la façon dont tu as rédigé le texte,et ne mentionne pas de validation comme ‘Vérifiez si le paragraphe respecte les exigences’ ou ‘Le paragraphe est écrit en bon français.’"
         )
     elif sentiment_type == "négatifs":
         prompt = (
-           f"D'après les retours des clients, les avis négatifs soulignent principalement {short_text}, "
-            "notamment la lenteur du déblocage des fonds et le manque de respect. "
-            "Rédige trois phrases maximum en bon français, "
-            "sans énumération brute, et veille à inclure les problèmes concrets, "
-            "sans mentionner les avis positifs ou neutres, et sans finir tes phrases incomplètement. "
-            "Évite de répéter plusieurs fois la même expression et corrige toute faute de frappe (par exemple => 'débloquer')."
+            f"On observe que, d'après les retours des clients négatifs, les avis négatifs portent principalement sur {short_text}, fait en sorte d' analyser pour clarifier cette tendance utilise impérativement un extrait pour reformuler la tendance de manière précise  (par exemple la phrase: 'Sans frais sont souvent considérés comme inexistants' ne veux rien dire il faut un minimum utiliser le contexte pour que ca ait du sens "
+            "Rédige un seul paragraphe en bon français, sans mentionner les avis positifs ou neutres. "
+            "Contente-toi de décrire les points négatifs rapportés dans les retours, de manière purement descriptive ne donne pas de conseils."
+            "Privilégie un style narratif fluide, sans énumération brute ni connecteurs répétitifs. "
+            "Ne t’arrête pas en plein mot, termine entièrement chacune des phrases, quand tu commences une idée tu la développe entièrement (par exemple pas de 'après ces retours, il app.' et puis plus rien la phrase est interrompue ici), et évite de répéter la même idée."
+            "Ne rédige pas de note ou d'explication sur la façon dont tu as rédigé le texte, et ne mentionne pas de validation comme ‘Vérifiez si le paragraphe respecte les exigences’ ou ‘Le paragraphe est écrit en bon français.’"
         )
     else:
         prompt = (
-            f"D'après les retours des clients, les avis neutres portent sur {short_text}. "
-            "Rédige trois phrases maximum en bon français, en intégrant naturellement ces idées "
-            "sans liste ni énumération, et sans mentionner les avis positifs ou négatifs. "
-            "Ne termine pas tes phrases de manière incomplète : arrête-toi net après trois phrases. "
-            "Évite de répéter plusieurs fois la même expression et corrige toute faute de frappe (par exemple 'déblocer' => 'débloquer')."
+            f"On observe que, d'après les retours des clients neutres, les avis neutres concernent {short_text}, fait en sorte d' analyser pour clarifier cette tendance utilise impérativement un extrait pour reformuler la tendance de manière précise  (par exemple la phrase: 'Sans frais sont souvent considérés comme inexistants' ne veux rien dire il faut un minimum utiliser le contexte pour que ca ait du sens "
+            "Rédige un seul paragraphe en bon français, sans mentionner ni les avis positifs ni les avis négatifs. "
+            "Contente-toi de décrire les points neutres rapportés dans les retours, de manière purement descriptive ne donne pas de conseils."
+            "Privilégie un style narratif fluide, sans énumération brute ni connecteurs répétitifs. "
+            "Ne t’arrête pas en plein mot, termine entièrement chacune des phrases, quand tu commences une idée tu la développe entièrement (par exemple pas de 'après ces retours, il app.' et puis plus rien la phrase est interrompue ici), et évite de répéter la même idée."
+            "Ne rédige pas de note ou d'explication sur la façon dont tu as rédigé le texte, et ne mentionne pas de validation comme ‘Vérifiez si le paragraphe respecte les exigences’ ou ‘Le paragraphe est écrit en bon français.’"
         )
 
     out = text_generator(prompt)
@@ -164,12 +196,14 @@ def generate_summary_instruct(trends, sentiment_type):
     else:
         summary = full_text
 
-    # Pour éviter que la réponse commence par "Réponse:"
+    summary = summary.lstrip("'")
     summary = summary.replace("Réponse:", "").strip()
 
-    summary = postprocess_limited_sentences(summary, max_sentences=3)
+    summary = postprocess_limited_sentences(summary, max_sentences=max_sentences)
+    summary = remove_incomplete_ending(summary)
 
     return summary
+
 
 def main():
     print(" Lecture du fichier de tendances...")
@@ -201,7 +235,7 @@ def main():
             snippet = find_context(t, pos_reviews)
             f.write(f"- {t}")
             if snippet:
-                f.write(f" (extrait : {snippet})")
+                f.write(f" (exemple de contexte : {snippet})")
             f.write("\n")
         f.write("\n")
         f.write("**Synthèse des avis négatifs :**\n")
@@ -211,7 +245,7 @@ def main():
             snippet = find_context(t, neg_reviews)
             f.write(f"- {t}")
             if snippet:
-                f.write(f" (extrait : {snippet})")
+                f.write(f" (exemple de contexte : {snippet})")
             f.write("\n")
         f.write("\n")
         f.write("**Synthèse des avis neutres :**\n")
@@ -221,7 +255,7 @@ def main():
             snippet = find_context(t, neu_reviews)
             f.write(f"- {t}")
             if snippet:
-                f.write(f" (extrait : {snippet})")
+                f.write(f" (exemple de contexte : {snippet})")
             f.write("\n")
         f.write("\n")
     print(f"✅ Résumé enregistré dans {TREND_OUTPUT_FILE}.")

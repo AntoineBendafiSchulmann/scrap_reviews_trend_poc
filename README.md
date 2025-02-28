@@ -1,8 +1,8 @@
-# 📊 Classification des Avis - Analyse de Sentiment en Français et Synthèse des Tendances les plus Récurrentes
+# 📊 Analyse de Sentiment en Français et Synthèse des Tendances les plus Récurrentes en local (sans dépendance de services externes)
 
 ## 📌 Contexte
 
-Ce projet offre la possibilité de **classer des commentaires** de clients francophones en trois catégories (POSITIVE, NEGATIVE, NEUTRAL) **et** de **générer automatiquement** des **synthèses** décrivant les tendances les plus représentatives pour chaque sentiment.
+Ce projet offre la possibilité de **classer des commentaires** de clients francophones en trois catégories (POSITIVE, NEGATIVE, NEUTRAL) **et** de **générer automatiquement** des **synthèses** décrivant les tendances les plus représentatives pour chaque sentiment, le tout **en local** car ce projet ce destine à la manipulation  de données sensibles d’entreprise sans dépendre de services externes.
 
 - **POSITIVE** 🟢 : Un avis globalement positif  
 - **NEGATIVE** 🔴 : Un avis globalement négatif  

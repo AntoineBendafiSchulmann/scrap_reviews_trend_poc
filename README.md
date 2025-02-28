@@ -1,18 +1,20 @@
-# 📊 Classification des Avis - Analyse de Sentiment en Français
+# 📊 Classification des Avis - Analyse de Sentiment en Français et Synthèse des Tendances les plus Récurrentes
 
 ## 📌 Contexte
 
-Ce projet offre la possibilité de **classer des commentaires** de clients francophones en trois catégories :  
+Ce projet offre la possibilité de **classer des commentaires** de clients francophones en trois catégories (POSITIVE, NEGATIVE, NEUTRAL) **et** de **générer automatiquement** des **synthèses** décrivant les tendances les plus représentatives pour chaque sentiment.
+
 - **POSITIVE** 🟢 : Un avis globalement positif  
 - **NEGATIVE** 🔴 : Un avis globalement négatif  
 - **NEUTRAL** 🟡 : Un avis mitigé/neutre  
 
-L’objectif est de créer un proof of concept (poc) pour l'analyse d'avis automatique en français. Dans cet exemple, j'ai choisi des critiques de restaurants/d'entreprises et leur attribuer automatiquement une **catégorie de sentiment**.
+L’objectif est de créer un proof of concept (poc) pour l'analyse d'avis automatique en français. Dans l’exemple fourni, il s’agit principalement de critiques de restaurants et d’entreprises, mais la méthodologie peut s’appliquer à d’autres domaines.
 
-Ce projet s'appuie sur les modèles suivants :
+Ce projet s'appuie sur plusieurs approches et modèles NLP :
 
- - **TextBlob-fr**, une bibliothèque NLP  basé sur des mots-clés et un dictionnaire.
- - **CamemBERT** modèle transformers , est plus apte à traiter les phrases nuancées.
+- **TextBlob-fr** : bibliothèque basée sur un dictionnaire de mots-clés (analyse de sentiment de base).
+- **CamemBERT** : modèle *transformers* plus apte à gérer des nuances linguistiques complexes.
+- **Llama** : grand modèle de langage (LLM) utilisé pour **générer des synthèses** en français, en se fondant sur les tendances détectées dans les avis (positifs, négatifs et neutres).
 
 
 
@@ -49,7 +51,7 @@ pip install -r requirements.txt
 ```bash
 python -m src.sentiment...
 ```
-(Assurez vous que ```reviews_output.txt``` est bien rempli de n'importe quelle manière avant de lancer le script.)
+(Assurez vous que ```trustpilot_reviews.txt``` est bien rempli de n'importe quelle manière avant de lancer le script.)
 
 
 ##  📂 Organisation du projet
@@ -57,12 +59,15 @@ python -m src.sentiment...
 ```bash
 📦 scrap_reviews_trend_poc
  ┣ 📂 src
- ┃ ┣ 📜 sentiment[nom du model].py        # Script  d'analyse de sentiment avec un modèle choisi (TextBlob-fr, CamemBERT)
- ┃ ┗ 📜 utils.py            # Fonctions auxiliaires
- ┣ 📜 reviews_output.txt    # Fichier contenant les avis à analyser ici rempli avec de l'API Yelp mais on peut le remplir avec n'importe quoi
- ┣ 📜 reviews_with_sentiment.txt  # Résultats de l'analyse
- ┣ 📜 requirements.txt       # Liste des dépendances
- ┗ 📜 README.md             
+    ┣ 📜 sentiment[nom du model].py 
+    ┣ 📜 sentiment[nom du model].py        # Script  d'analyse de sentiment avec un modèle choisi (TextBlob-fr, CamemBERT)
+    ┣ 📜 sentiment_trend_analysis.py  # Script d'analyse de tendances 
+    ┃ ┗ 📜 utils.py            # Fonctions auxiliaires
+    ┣ 📜 scrape_trustpilot.py  # Script de scraping des avis de trustpilot
+┣ 📜 trustpilot_reviews.txt    # Fichier contenant les avis à analyser ici rempli avec le fichier scrape_trustpilot.py  mais on peut le remplir avec n'importe quoi
+┣ 📜 reviews_with_sentiment.txt  # Résultats de l'analyse
+┣ 📜 requirements.txt       # Liste des dépendances
+┗ 📜 README.md             
 
 ```
 
@@ -96,6 +101,11 @@ Après avoir exécuté la prédiction de sentiment par exemple avec le modèle `
 
 ```bash
 python -m src.sentiment_textblob_fr
+```
+ou utiliser le modèle `CamemBERT` avec la commande suivante :
+
+```bash
+python -m src.sentiment_camembert
 ```
 
 Sortie attendue :
@@ -215,6 +225,78 @@ Le modèle montre ses limites sur des phrases mal formulées ou ambiguës :
 
     - Le modèle comprend pas bien le second degré ou l'ironie
 
+
+## 🔎 Extension : Extraction de tendances et génération de synthèses
+
+
+En plus de la classification des avis (positifs, négatifs, neutres), ce projet propose un **script** permettant :
+
+1. **D’identifier les tendances principales** (mots ou expressions récurrentes) pour chaque catégorie de sentiment.
+2. **De rédiger automatiquement une courte synthèse**, en français, décrivant ces tendances pour chaque polarité (POSITIVE, NEGATIVE, NEUTRE).
+
+### Fichiers concernés
+
+- **`trustpilot_reviews_with_sentiment_camembert.txt`**  
+  Fichier d’entrée, contenant des avis déjà labellisés (POSITIVE, NEGATIVE, NEUTRAL) avec le modèle ```CamemBERT``` ( ce choix est expliqué plus haut)
+  
+- **`trustpilot_sentiment_trends.txt`**  
+  Fichier de sortie, dans lequel sont sauvegardés :
+  - La répartition des sentiments (nombre d’avis positifs, négatifs et neutres),
+  - La synthèse générée pour chaque sentiment,
+  - Les tendances extraites, accompagnées d’un exemple de contexte (qui est le contexte de la première appariation d'une des tendances notables extraites) pour chaque tendance pouvant éventuellement être utilisé pour reformuler la tendance, aider le modèle à mieux comprendre le contexte.
+
+### Comment l’exécuter ?
+
+```bash
+python sentiment_trend_analysis.py
+```
+(Assurez-vous d’avoir installé les dépendances requises et d’avoir un environnement Python configuré.)
+
+### Étapes principales du script
+
+1. **Lecture et nettoyage**
+   - Charge le fichier `trustpilot_reviews_with_sentiment_camembert.txt`
+   - Applique un prétraitement basique (mise en minuscules, suppression de caractères indésirables, etc.)
+
+2. **Extraction de tendances**
+   - Utilise KeyBERT et YAKE pour repérer les expressions récurrentes dans chaque catégorie de sentiment (positif, négatif, neutre).
+   - Filtre certaines occurrences jugées trop génériques via une “blacklist”.
+
+3. **Recherche de contexte**
+   - Pour chaque tendance, le script récupère un court extrait (snippet) où la tendance apparaît dans l’avis, offrant un aperçu concret de la phrase d’origine.
+
+4. **Génération de synthèse**
+   - Un modèle Llama (`meta-llama/Llama-3.2-3B-Instruct`) est utilisé pour rédiger, en français, un paragraphe décrivant les grandes lignes relevées dans les avis positifs, négatifs ou neutres.
+   - Des consignes spécifiques sont fournies au modèle pour éviter un ton trop subjectif, des formulations incomplètes, ou étranges, sans aucun sens, ainsi qu'éviter les répétition ou les simples énumérations entrecoupées de virgules.
+
+5. **Écriture du résultat**
+   - Enregistre la répartition des sentiments, les synthèses, ainsi que la liste des tendances extraites (avec exemples de contexte) dans le fichier `trustpilot_sentiment_trends.txt`.
+
+### Résultat attendu :
+
+Voici un extrait type du fichier de sortie :
+
+```bash
+Répartition des sentiments :
+Positifs : 300 avis (75.00%)
+Négatifs : 50 avis (12.50%)
+Neutres  : 50 avis (12.50%)
+
+**Synthèse des avis positifs :**
+Les retours des clients soulignent principalement la rapidité du processus de demande et la disponibilité des conseillers...
+
+**Tendances extraites (positif) :**
+- rapide et efficace (exemple de contexte : "j'ai choisi de faire confiance à cofidis... le processus a été incroyablement rapide et efficace...")
+
+...
+```
+
+### Limitations
+-  Certaines formulations originales (p. ex. “Sans frais sont souvent considérés comme inexistants”) peuvent réapparaître si elles ne sont pas filtrées. Il est possible de les réécrire ou supprimer dans la partie “Recherche de contexte” si elles posent problème.
+-  L’exécution du modèle Llama requiert des ressources (GPU/CPU) pour un temps de traitement raisonnable.
+
+En conclusion ce script **complète** l’analyse de sentiments en fournissant un **aperçu synthétique** des sujets les plus récurrents, catégorisés par sentiment.
+
  ## 🔗 Liens 
 
  lien de la bibliothèque ```TextBlob-fr``` : https://github.com/sloria/textblob-fr
@@ -224,3 +306,5 @@ Le modèle montre ses limites sur des phrases mal formulées ou ambiguës :
  lien du modèle  ```CamemBERT``` ( pré-entraîné sur du texte général en français, mais pas spécifique à l'analyse de sentiment): https://huggingface.co/almanach/camembert-base/tree/main
 
  lien du modèle ```DistilCamemBERT``` (pré-entraîné sur du texte spécifique à l'analyse de sentiment ): https://huggingface.co/cmarkea/distilcamembert-base-sentiment/tree/main
+
+ lien du modèle ```Llama``` (pré-entraîné sur du texte général en français): https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct/tree/main

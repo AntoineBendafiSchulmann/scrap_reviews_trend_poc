@@ -136,8 +136,7 @@ def remove_incomplete_ending(summary: str) -> str:
     return final
 
 
-def generate_summary_instruct(trends, sentiment_type):
-
+def generate_summary_instruct(trends, sentiment_type, reviews):
     if not trends or trends == ["Aucune tendance détectée"]:
         return "Aucune idée générale détectée."
 
@@ -157,35 +156,61 @@ def generate_summary_instruct(trends, sentiment_type):
     else:
         short_text = f"plusieurs points récurrents, dont {trends[0]} et {trends[1]} entre autres"
 
-    # plus il y a de tendances significatives à décrire, plus le modèle a de place
-    max_sentences = len(trends) + 4
+    snippets = [find_context(trend, reviews) for trend in trends]
+    combined_snippets = " ".join([snippet for snippet in snippets if snippet])
+
+    UNDESIRABLE_IN_SNIPPETS = [
+        "joue sur",
+    ]
+    for phrase in UNDESIRABLE_IN_SNIPPETS:
+        combined_snippets = combined_snippets.replace(phrase, "")
 
     if sentiment_type == "positifs":
         prompt = (
-            f"On observe que, d'après les retours des clients positifs, les avis positifs portent principalement sur {short_text},fait en sorte d' analyser pour clarifier cette tendance utilise impérativement un extrait pour reformuler la tendance de manière précise  (par exemple la phrase: 'Sans frais sont souvent considérés comme inexistants' ne veux rien dire il faut un minimum utiliser le contexte pour que ca ait du sens "
+            f"On observe que, d'après les retours des clients positifs, les avis positifs portent principalement sur {short_text},"
+            f"avec ca je te donne un exemple illustrant ces tendances, évite de juste lister la tendance utilise pour décrire : {combined_snippets} "
+            "utilise impérativement cet extrait pour reformuler la tendance de manière précise "
+            "(par exemple la phrase: 'Sans frais sont souvent considérés comme inexistants' ne veux rien dire il faut un minimum utiliser le contexte pour que ca ait du sens. "
             "Rédige un seul paragraphe en bon français, sans mentionner les avis négatifs ni neutres. "
-            "Contente-toi de décrire les points positifs rapportés dans les retours, de manière purement descriptive ne donne pas de conseils."
+            "Contente-toi de décrire les points positifs rapportés dans les retours, de manière purement descriptive ne donne pas de conseils, "
+            "n'extrapole pas, pas de mots comme incroyablement, super, garde un ton objectif, impartial. "
             "Privilégie un style narratif fluide, sans énumération brute ni connecteurs répétitifs (ex. 'En outre', 'De plus'). "
-            "Ne t’arrête pas en plein mot, termine entièrement chacune des phrases, quand tu commences une idée tu la développe entièrement (par exemple pas de 'après ces retours, il app.' et puis plus rien la phrase est interrompue ici), et évite de répéter la même idée."
-            "Ne rédige pas de note ou d'explication sur la façon dont tu as rédigé le texte,et ne mentionne pas de validation comme ‘Vérifiez si le paragraphe respecte les exigences’ ou ‘Le paragraphe est écrit en bon français.’"
+            "Ne t’arrête pas en plein mot, termine entièrement chacune des phrases, quand tu commences une idée tu la développes entièrement, "
+            "et évite de répéter la même idée. "
+            "Ne rédige pas de note ou d'explication sur la façon dont tu as rédigé le texte, "
+            "et ne mentionne pas de validation comme ‘Vérifiez si le paragraphe respecte les exigences’ ou ‘Le paragraphe est écrit en bon français.’"
         )
     elif sentiment_type == "négatifs":
         prompt = (
-            f"On observe que, d'après les retours des clients négatifs, les avis négatifs portent principalement sur {short_text}, fait en sorte d' analyser pour clarifier cette tendance utilise impérativement un extrait pour reformuler la tendance de manière précise  (par exemple la phrase: 'Sans frais sont souvent considérés comme inexistants' ne veux rien dire il faut un minimum utiliser le contexte pour que ca ait du sens "
+            f"On observe que, d'après les retours des clients négatifs, les avis négatifs portent principalement sur {short_text},"
+            f"avec ca je te donne un exemple illustrant ces tendances, évite de juste lister la tendance utilise pour décrire : {combined_snippets} "
+            "utilise impérativement cet extrait pour reformuler la tendance de manière précise "
+            "(par exemple la phrase: 'Sans frais sont souvent considérés comme inexistants' ne veux rien dire il faut un minimum utiliser le contexte pour que ca ait du sens. "
             "Rédige un seul paragraphe en bon français, sans mentionner les avis positifs ou neutres. "
-            "Contente-toi de décrire les points négatifs rapportés dans les retours, de manière purement descriptive ne donne pas de conseils."
-            "Privilégie un style narratif fluide, sans énumération brute ni connecteurs répétitifs. "
-            "Ne t’arrête pas en plein mot, termine entièrement chacune des phrases, quand tu commences une idée tu la développe entièrement (par exemple pas de 'après ces retours, il app.' et puis plus rien la phrase est interrompue ici), et évite de répéter la même idée."
-            "Ne rédige pas de note ou d'explication sur la façon dont tu as rédigé le texte, et ne mentionne pas de validation comme ‘Vérifiez si le paragraphe respecte les exigences’ ou ‘Le paragraphe est écrit en bon français.’"
+            "Contente-toi de décrire les points négatifs rapportés dans les retours, de manière purement descriptive, "
+            "n'extrapole pas, pas de mots comme incroyablement, super, garde un ton objectif, impartial. "
+            "Privilégie un style narratif fluide, sans énumération brute ni connecteurs répétitifs (ex. 'En outre', 'De plus'). "
+            "Ne t’arrête pas en plein mot, termine entièrement chacune des phrases, quand tu commences une idée tu la développes entièrement, "
+            "et évite de répéter la même idée. "
+            "Ne rédige pas de note ou d'explication sur la façon dont tu as rédigé le texte, "
+            "et ne mentionne pas de validation comme ‘Vérifiez si le paragraphe respecte les exigences’ ou ‘Le paragraphe est écrit en bon français.’ "
+            "N'écris pas que l'entreprise joue sur ses avis négatifs."
         )
     else:
         prompt = (
-            f"On observe que, d'après les retours des clients neutres, les avis neutres concernent {short_text}, fait en sorte d' analyser pour clarifier cette tendance utilise impérativement un extrait pour reformuler la tendance de manière précise  (par exemple la phrase: 'Sans frais sont souvent considérés comme inexistants' ne veux rien dire il faut un minimum utiliser le contexte pour que ca ait du sens "
-            "Rédige un seul paragraphe en bon français, sans mentionner ni les avis positifs ni les avis négatifs. "
-            "Contente-toi de décrire les points neutres rapportés dans les retours, de manière purement descriptive ne donne pas de conseils."
-            "Privilégie un style narratif fluide, sans énumération brute ni connecteurs répétitifs. "
-            "Ne t’arrête pas en plein mot, termine entièrement chacune des phrases, quand tu commences une idée tu la développe entièrement (par exemple pas de 'après ces retours, il app.' et puis plus rien la phrase est interrompue ici), et évite de répéter la même idée."
-            "Ne rédige pas de note ou d'explication sur la façon dont tu as rédigé le texte, et ne mentionne pas de validation comme ‘Vérifiez si le paragraphe respecte les exigences’ ou ‘Le paragraphe est écrit en bon français.’"
+            f"On observe que, d'après les retours des clients neutres, les avis neutres concernent {short_text}, "
+            f"avec ca je te donne un exemple illustrant ces tendances, évite de juste lister la tendance utilise pour décrire : {combined_snippets} "
+            "N’écris pas que “joue sur…” ou toute tournure suggérant une volonté de la part de l’entreprise de manipuler les avis."
+            "utilise impérativement cet extrait pour reformuler la tendance de manière précise "
+            "(par exemple la phrase: 'Sans frais sont souvent considérés comme inexistants' ne veux rien dire il faut un minimum utiliser le contexte pour que ca ait du sens. "
+            "Rédige un seul paragraphe en bon français, sans mentionner les avis positifs ou négatifs. "
+            "Contente-toi de décrire les points neutres rapportés dans les retours, de manière purement descriptive, "
+            "n'extrapole pas, pas de mots comme incroyablement, super, garde un ton objectif, impartial. "
+            "Privilégie un style narratif fluide, sans énumération brute ni connecteurs répétitifs (ex. 'En outre', 'De plus'). "
+            "Ne t’arrête pas en plein mot, termine entièrement chacune des phrases, quand tu commences une idée tu la développes entièrement, "
+            "et évite de répéter la même idée. "
+            "Ne rédige pas de note ou d'explication sur la façon dont tu as rédigé le texte, "
+            "et ne mentionne pas de validation comme ‘Vérifiez si le paragraphe respecte les exigences’ ou ‘Le paragraphe est écrit en bon français.’"
         )
 
     out = text_generator(prompt)
@@ -196,14 +221,22 @@ def generate_summary_instruct(trends, sentiment_type):
     else:
         summary = full_text
 
-    summary = summary.lstrip("'")
-    summary = summary.replace("Réponse:", "").strip()
+    UNDESIRABLE_PHRASES = [
+        "réponse:",
+        "Réponse:",
+        "joue sur",
+    ]
+    for phr in UNDESIRABLE_PHRASES:
+        summary = summary.replace(phr, "")
 
+
+    summary = re.sub(r"(?i)réponse:", "", summary).strip()
+
+    max_sentences = len(trends) + 4
     summary = postprocess_limited_sentences(summary, max_sentences=max_sentences)
     summary = remove_incomplete_ending(summary)
 
     return summary
-
 
 def main():
     print(" Lecture du fichier de tendances...")
@@ -219,9 +252,9 @@ def main():
     neg_trends = extract_trends(neg_reviews, "négatif")
     neu_trends = extract_trends(neu_reviews, "neutre")
     print(" Génération des résumés ...")
-    pos_summary = generate_summary_instruct(pos_trends, "positifs")
-    neg_summary = generate_summary_instruct(neg_trends, "négatifs")
-    neu_summary = generate_summary_instruct(neu_trends, "neutres")
+    pos_summary = generate_summary_instruct(pos_trends, "positifs", pos_reviews)
+    neg_summary = generate_summary_instruct(neg_trends, "négatifs", neg_reviews)
+    neu_summary = generate_summary_instruct(neu_trends, "neutres", neu_reviews)
     total = len(df)
     with open(TREND_OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write("Répartition des sentiments :\n")
@@ -261,4 +294,4 @@ def main():
     print(f"✅ Résumé enregistré dans {TREND_OUTPUT_FILE}.")
 
 if __name__ == "__main__":
-    main()
+    main() 

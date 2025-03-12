@@ -64,7 +64,7 @@ exemple avec **cofidis.fr**
 ```bash
 python -m src.scrape_trustpilot cofidis.fr
 ```
-Le script va automatiquement parcourir les pages d’avis sur Trustpilot pour ce domaine et enregistrer chaque commentaire dans ```trustpilot_reviews.txt``` Il suffit donc de passer le nom de domaine comme argument, il continue donc la collecte tant qu’il trouve du contenu à extraire pour le domaine indiqué.
+Le script va automatiquement parcourir les pages d’avis sur Trustpilot pour ce domaine et enregistrer chaque commentaire dans ```trustpilot_reviews.txt```, il suffit donc de passer le nom de domaine comme argument, le code continue donc la collecte tant qu’il trouve du contenu à extraire pour le domaine indiqué et s’arrête de lui-même dès qu’il n’y a plus aucun avis chargé sur la page suivante.
 
 - Pour classifier les avis :
 

@@ -52,6 +52,20 @@ pip install -r requirements.txt
 
 4️⃣ Exécuter les scripts
 
+- Récupérer les avis depuis Trustpilot pour un domaine particulier:
+
+la commande doit entrée doit correspondre à ce format : 
+
+```bash
+python scrape_trustpilot.py <site>
+```
+exemple avec **cofidis.fr**
+
+```bash
+python -m src.scrape_trustpilot cofidis.fr
+```
+Le script va automatiquement parcourir les pages d’avis sur Trustpilot pour ce domaine et enregistrer chaque commentaire dans ```trustpilot_reviews.txt``` Il suffit donc de passer le nom de domaine comme argument, il continue donc la collecte tant qu’il trouve du contenu à extraire pour le domaine indiqué.
+
 - Pour classifier les avis :
 
 ```bash
@@ -160,11 +174,11 @@ Comme dans cet autre projet : https://github.com/AntoineBendafiSchulmann/deaplea
 **Grâce à ce système**, le modèle :
 - Ne part pas de zéro.  
 - Ne se base pas uniquement sur sa “mémoire interne”.  
-- Il lit des extraits concrets trouvés via FAISS.  
+- Il lit des extraits concrets trouvés via ```FAISS```.  
 
 C’est ce qu’on appelle **Retrieval-Augmented Generation (RAG)** :  
-1. **Retrieval** (récupérer des extraits utiles dans FAISS),  
-2. **Augmented Generation** (le modèle Llama s’appuie sur ces extraits pour rédiger une synthèse réaliste).
+1. **Retrieval** (récupérer des extraits utiles dans ```FAISS```),  
+2. **Augmented Generation** (le modèle ```Llama``` s’appuie sur ces extraits pour rédiger une synthèse réaliste).
 
 Résultat : une **synthèse** plus réaliste, **ancrée dans les vrais avis**.
 
@@ -226,7 +240,6 @@ Limitations
 - Sur CPU, Llama + FAISS peut être lent pour un large volume d’avis.
 - La blacklist et les réglages de ```KeyBERT/YAKE``` peuvent demander un ajustement pour filtrer certains mots-clés “inutiles” ou étranges.
 - Si les avis sont très mal écrits, le modèle peut se tromper.
-
 
  ## 🔗 Liens 
 

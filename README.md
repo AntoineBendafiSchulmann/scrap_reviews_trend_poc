@@ -125,23 +125,23 @@ A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-00
 
 3. Analyser les tendances & générer la synthèse: 
 
-- Le script ```sentiment_trend_analysis.py``` :
+    - Le script ```sentiment_trend_analysis.py``` :
 
-1.  Détecte les tendances (mots-clés) avec ```KeyBERT``` et ```YAKE```.
-    - extraient des mots-clés de chacun des avis.
-    - on cumule tous ces mots-clés dans un ```Counter```, pour chaque sentiment.
-    - on ne garde que ceux qui apparaissent ≥3 fois, et qui ne sont pas dans la blacklist.
-   
-2. Filtre (blacklist) pour supprimer les termes trop génériques 
+    - Détecte les tendances (mots-clés) avec ```KeyBERT``` et ```YAKE```.
+        - extraient des mots-clés de chacun des avis.
+        - on cumule tous ces mots-clés dans un ```Counter```, pour chaque sentiment.
+        - on ne garde que ceux qui apparaissent ≥3 fois, et qui ne sont pas dans la blacklist.
     
-3. RAG (Retrieval-Augmented Generation) via FAISS pour récupérer quelques extraits vraiment pertinents
+    - Filtre (blacklist) pour supprimer les termes trop génériques 
+        
+    - RAG (Retrieval-Augmented Generation) via FAISS pour récupérer quelques extraits vraiment pertinents
 
-4. Génère un paragraphe de synthèse avec ```Llama```, qui s’appuie sur ces extraits réels, au lieu d’inventer
+    - Génère un paragraphe de synthèse avec ```Llama```, qui s’appuie sur ces extraits réels, au lieu d’inventer
 
-- Le résultat se trouve dans ```trustpilot_sentiment_trends.txt```, avec :
-    - la répartition des avis (POSITIVE, NEGATIVE, NEUTRAL),
-    - les tendances trouvées,
-    - la synthèse rédigée pour chaque sentiment.
+    - Le résultat se trouve dans ```trustpilot_sentiment_trends.txt```, avec :
+        - la répartition des avis (POSITIVE, NEGATIVE, NEUTRAL),
+        - les tendances trouvées,
+        - la synthèse rédigée pour chaque sentiment.
 
 
 ## RAG (Retrieval-Augmented Generation) : Pourquoi et Comment ?

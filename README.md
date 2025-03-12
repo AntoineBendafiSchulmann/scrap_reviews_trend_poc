@@ -127,7 +127,7 @@ A1b2C3d4E5f6	chez-mamie-louise-lille	Chez Mamie Louise	4.2	00000000-0000-0000-00
 
 - Le script ```sentiment_trend_analysis.py``` :
 
-    1. Détecte les tendances (mots-clés) avec ```KeyBERT``` et ```YAKE```.KeyBERT et YAKE 
+    1.  Détecte les tendances (mots-clés) avec ```KeyBERT``` et ```YAKE```.
     - extraient des mots-clés de chacun des avis.
     - on cumule tous ces mots-clés dans un ```Counter```, pour chaque sentiment.
     - on ne garde que ceux qui apparaissent ≥3 fois, et qui ne sont pas dans la blacklist.

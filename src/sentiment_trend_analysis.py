@@ -5,6 +5,7 @@ import faiss
 import spacy
 import pandas as pd
 import time
+import json
 from collections import Counter
 from keybert import KeyBERT
 from yake import KeywordExtractor
@@ -41,14 +42,29 @@ text_generator = pipeline(
 )
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+CONFIG_DIR = os.path.join(BASE_DIR, "..", "config")
+
 TREND_INPUT_FILE = os.path.join(BASE_DIR, "trustpilot_reviews_with_sentiment_camembert.txt")
 TREND_OUTPUT_FILE = os.path.join(BASE_DIR, "trustpilot_sentiment_trends.txt")
 
-SYNONYMS_MAP = {
-    "déblocage des fonds": ["fonds débloqués", "libération des fonds", "déblocage fond"],
-    "prise en charge": ["prise en compte", "prise en charge dossier"],
-    "traitement du dossier": ["étude du dossier", "dossier traité rapidement", "traitement dossier"]
-}
+SYNONYMS_FILE  = os.path.join(CONFIG_DIR, "synonyms_map.json")
+REPLACE_FILE   = os.path.join(CONFIG_DIR, "replace_map.json")
+BLACKLIST_FILE = os.path.join(CONFIG_DIR, "blacklist.json")
+
+def load_config():
+    with open(SYNONYMS_FILE, "r", encoding="utf-8") as f:
+        synonyms_map = json.load(f)
+
+    with open(REPLACE_FILE, "r", encoding="utf-8") as f:
+        replace_map = json.load(f)
+
+    with open(BLACKLIST_FILE, "r", encoding="utf-8") as f:
+        blacklist_data = json.load(f)
+        blacklist = set(blacklist_data)
+
+    return synonyms_map, replace_map, blacklist
+
 
 def clean_text(txt: str) -> str:
     txt = txt.lower()
@@ -62,25 +78,24 @@ def is_substantive_enough(phrase: str) -> bool:
             return True
     return False
 
-def unify_synonyms(trend: str) -> str:
+def unify_synonyms(trend: str, synonyms_map: dict) -> str:
     t_lower = trend.lower()
-    for canon_label, syn_list in SYNONYMS_MAP.items():
+    for canon_label, syn_list in synonyms_map.items():
         for syn in syn_list:
             if syn in t_lower:
                 return canon_label
     return trend
 
-def refine_trends(trends):
+def refine_trends(trends, replace_map, synonyms_map):
     if not trends or trends == ["Aucune tendance détectée"]:
         return ["Aucune tendance détectée"]
     refined = []
     seen = set()
     for t in trends:
-        t = t.replace("rge vendre de faux panneaux", "arnaque sur les panneaux solaires")
-        t = t.replace("cofidis et société planète écologique", "cofidis et une entreprise écologique")
-        t = t.replace("montant mais globalement la conseillère", "avis sur le montant et le conseil")
+        for old_str, new_str in replace_map.items():
+            t = t.replace(old_str, new_str)
 
-        t = unify_synonyms(t)
+        t = unify_synonyms(t, synonyms_map)
         doc = nlp(t)
         if len(doc) > 2 and not any(nlp(s).similarity(doc) > 0.85 for s in seen):
             seen.add(t)
@@ -91,14 +106,8 @@ def extract_trends(texts, sentiment, top_n=20):
     if not texts:
         return ["Aucune tendance détectée"]
 
-    blacklist = {
-        "oreille","bonjour","rien dire","merci","avis","service","produit","client",
-        "commande","livraison","qualité","prix","problème","réponse","temps","jour",
-        "mois","année","site","achat","article","boutique","contact","expérience",
-        "satisfaction","équipe","personnel","support","aide","solution","proposition",
-        "demande","information","délai","paiement","facture","remboursement","réclamation",
-        "conseil","commentaire","note","évaluation","feedback","fois que je fais appel"
-    }
+    synonyms_map, replace_map, blacklist = load_config()
+    # print("blacklist chargée :", blacklist)
 
     all_trends = []
     for txt in texts:
@@ -118,7 +127,7 @@ def extract_trends(texts, sentiment, top_n=20):
         if c >= 3 and p not in blacklist
     ][:top_n]
 
-    refined = refine_trends(extracted)
+    refined = refine_trends(extracted, replace_map, synonyms_map)
 
     candidate_trends = []
     for t in refined:
@@ -244,8 +253,6 @@ def rag_generate_summary(trends, sentiment_type, index, embeddings, chunks):
     summary = postprocess_limited_sentences(summary, max_sentences)
     summary = remove_incomplete_ending(summary)
     return summary
-
-import time
 
 def main():
     start_time = time.time()

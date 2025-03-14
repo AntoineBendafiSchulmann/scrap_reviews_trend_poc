@@ -83,6 +83,10 @@ Ce script utilise ```trustpilot_reviews_with_sentiment_camembert.txt```
 ##  Organisation du projet
 ```bash
 📦 scrap_reviews_trend_poc
+ ┣ 📂 config
+ │  ┣ 📜 blacklist.json                  # Mots & expressions à ignorer ou filtrer
+ │  ┣ 📜 replace_map.json                # Remplacements de certaines chaînes de caractères mal formulées
+ │  ┗ 📜 synonyms_map.json               # Listes de synonymes pour unifier la forme de certaines tendances
  ┣ 📂 src
     ┣ 📜 scrape_trustpilot.py          # Récupère les avis en ligne (ex: cofidis.fr)
     ┣ 📜 sentiment_camembert.py        # Classe chaque avis (POSITIVE, NEGATIVE, NEUTRAL) via CamemBERT
@@ -241,7 +245,7 @@ Avantages
 
 Limitations
 
-- Sur CPU, Llama + FAISS peut être lent pour un large volume d’avis.
+- Sur CPU, ```Llama``` + ```FAISS``` peut être lent pour un large volume d’avis.
 - La blacklist et les réglages de ```KeyBERT/YAKE``` peuvent demander un ajustement pour filtrer certains mots-clés “inutiles” ou étranges.
 - Si les avis sont très mal écrits, le modèle peut se tromper.
 
